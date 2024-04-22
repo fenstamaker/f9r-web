@@ -28,7 +28,7 @@ export default function Page() {
       </AppShellHeader>
       <AppShellMain>
         <Container>
-          <SimpleGrid cols={4}>
+          <SimpleGrid cols={{ base: 2, sm: 3, lg: 4 }}>
             <Anchor component={Link} href="/newsletters">
               <Card shadow="sm" padding="lg" radius="md" withBorder>
                 <Flex align="center" justify="center">

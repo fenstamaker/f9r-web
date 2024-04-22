@@ -7,9 +7,9 @@ const JMAP = new Jmap({
   authToken: process.env.JMAP_AUTH_TOKEN ?? "",
 });
 
-export const getNewsletters = cache(async () => {
+export const getNewsletters = async () => {
   return JMAP.getNewsletters();
-});
+};
 
 export const getNewsletter = cache(async (id: string) => {
   return JMAP.getEmail(id);
