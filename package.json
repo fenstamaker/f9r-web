@@ -8,8 +8,8 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
-    "@repo/eslint-config": "*",
     "@repo/typescript-config": "*",
+    "@types/lodash": "^4.17.0",
     "prettier": "^3.2.5",
     "turbo": "latest"
   },
@@ -20,5 +20,8 @@
   "workspaces": [
     "apps/*",
     "packages/*"
-  ]
+  ],
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
 }

@@ -1,0 +1,13 @@
+{
+  "name": "@repo/jmap",
+  "version": "0.0.0",
+  "private": true,
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "devDependencies": {
+    "@repo/typescript-config": "*",
+    "@types/node": "^20.11.24",
+    "typescript": "^5.3.3"
+  }
+}
