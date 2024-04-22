@@ -1,5 +1,5 @@
 import { NavLink, Stack } from "@mantine/core";
-import { MailingList, Newsletter } from "@repo/jmap";
+import { MailingList, Email } from "@repo/jmap";
 import Link from "next/link";
 import React from "react";
 
@@ -8,7 +8,7 @@ export default function NewsletterList({
   newsletters,
 }: {
   selected: MailingList;
-  newsletters: Newsletter[];
+  newsletters: Email[];
 }) {
   return (
     <Stack gap="xs">

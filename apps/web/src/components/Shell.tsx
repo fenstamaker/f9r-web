@@ -9,7 +9,7 @@ import {
   Title,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
-import { MailingList, Newsletter } from "@repo/jmap";
+import { MailingList, Email } from "@repo/jmap";
 import Link from "next/link";
 import React from "react";
 
@@ -20,7 +20,7 @@ export default function Shell({
   selected,
 }: {
   lists: MailingList[];
-  newsletters: Newsletter[];
+  newsletters: Email[];
   children: React.ReactNode;
   selected?: MailingList;
 }) {
