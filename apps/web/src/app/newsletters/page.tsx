@@ -3,6 +3,7 @@ import Shell from "@/components/Shell";
 import { getNewsletters } from "@/fastmail";
 import { Title } from "@mantine/core";
 import _ from "lodash";
+import { unstable_noStore } from "next/cache";
 import React from "react";
 
 export default async function Page({
@@ -10,6 +11,7 @@ export default async function Page({
 }: {
   params: { email: string };
 }): Promise<React.ReactNode> {
+  unstable_noStore();
   const newsletters = await getNewsletters();
   const lists = _.uniqBy(newsletters.map((n) => n.from).flat(), "email");
   const selected = lists[0];
