@@ -16,9 +16,11 @@ import React from "react";
 export default function Shell({
   children,
   navbar,
+  title,
 }: {
   children: React.ReactNode;
   navbar: React.ReactNode;
+  title: string;
 }) {
   const [opened, { toggle }] = useDisclosure();
 
@@ -35,7 +37,7 @@ export default function Shell({
       <AppShellHeader>
         <Group h="100%" px="md">
           <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
-          <Title order={1}>newsletters</Title>
+          <Title order={1}>{title}</Title>
         </Group>
       </AppShellHeader>
       {navbar}
