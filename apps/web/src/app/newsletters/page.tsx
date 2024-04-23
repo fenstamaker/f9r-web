@@ -1,10 +1,16 @@
-import NewsletterList from "@/components/NewsletterList";
+import MailingList from "@/components/MailingList";
+import MailingListNewsletters from "@/components/MailingListNewsletters";
+
 import Shell from "@/components/Shell";
-import { getNewsletters } from "@/fastmail";
+import { getMailingLists, getNewsletters } from "@/fastmail";
 import { Title } from "@mantine/core";
 import _ from "lodash";
 import { unstable_noStore } from "next/cache";
 import React from "react";
+
+export const metadata = {
+  title: "newsletters",
+};
 
 export default async function Page({
   params,
@@ -12,16 +18,18 @@ export default async function Page({
   params: { email: string };
 }): Promise<React.ReactNode> {
   unstable_noStore();
-  const newsletters = await getNewsletters();
-  const lists = _.uniqBy(newsletters.map((n) => n.from).flat(), "email");
-  const selected = lists[0];
+  const mailingLists = await getMailingLists();
+  const selected = mailingLists[0];
+  if (!selected) {
+    return <></>;
+  }
 
   return (
-    <Shell lists={lists} newsletters={newsletters} selected={selected}>
+    <Shell navbar={<MailingList selectedId={selected.id} />}>
       {selected && (
         <>
           <Title order={1}>{selected?.name}</Title>
-          <NewsletterList selected={selected} newsletters={newsletters} />
+          <MailingListNewsletters mailingList={selected} />
         </>
       )}
     </Shell>

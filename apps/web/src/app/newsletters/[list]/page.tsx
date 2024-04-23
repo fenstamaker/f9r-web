@@ -1,7 +1,9 @@
-import NewsletterList from "@/components/NewsletterList";
-import { getNewsletters } from "@/fastmail";
+import MailingListNewsletters from "@/components/MailingListNewsletters";
+
+import { getMailingList, getMailingLists, getNewsletters } from "@/fastmail";
 import { Title } from "@mantine/core";
 import _ from "lodash";
+import { unstable_noStore } from "next/cache";
 import React from "react";
 
 export default async function Page({
@@ -9,17 +11,12 @@ export default async function Page({
 }: {
   params: { list: string };
 }): Promise<React.ReactNode> {
-  const email = decodeURIComponent(params.list);
-  const newsletters = await getNewsletters();
-  const lists = _.uniqBy(newsletters.map((n) => n.from).flat(), "email");
-  const selected = lists.find((l) => l.email === email);
+  const mailingList = await getMailingList(params.list);
 
   return (
     <>
-      <Title order={1}>{selected?.name}</Title>
-      {selected && (
-        <NewsletterList selected={selected} newsletters={newsletters} />
-      )}
+      <Title order={1}>{mailingList.name}</Title>
+      <MailingListNewsletters mailingList={mailingList} />
     </>
   );
 }

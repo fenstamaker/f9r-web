@@ -7,6 +7,18 @@ const JMAP = new Jmap({
   authToken: process.env.JMAP_AUTH_TOKEN ?? "",
 });
 
+export const getMailingLists = async () => {
+  return JMAP.getMailingLists();
+};
+
+export const getMailingListNewsletters = async (mailingListId: string) => {
+  return JMAP.listEmailsInBox(mailingListId);
+};
+
+export const getMailingList = async (mailingListId: string) => {
+  return JMAP.getMailingList(mailingListId);
+};
+
 export const getNewsletters = async () => {
   return JMAP.getNewsletters();
 };

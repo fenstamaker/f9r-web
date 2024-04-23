@@ -3,8 +3,7 @@ import { ColorSchemeScript, createTheme, MantineProvider } from "@mantine/core";
 import React from "react";
 
 export const metadata = {
-  title: "My Mantine app",
-  description: "I have followed setup instructions carefully",
+  title: "web.f9r.dev portal",
 };
 
 export default function RootLayout({

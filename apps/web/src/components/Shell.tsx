@@ -9,20 +9,16 @@ import {
   Title,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
-import { MailingList, Email } from "@repo/jmap";
+import { EmailSender, Email } from "@repo/jmap";
 import Link from "next/link";
 import React from "react";
 
 export default function Shell({
-  lists,
-  newsletters,
   children,
-  selected,
+  navbar,
 }: {
-  lists: MailingList[];
-  newsletters: Email[];
   children: React.ReactNode;
-  selected?: MailingList;
+  navbar: React.ReactNode;
 }) {
   const [opened, { toggle }] = useDisclosure();
 
@@ -42,16 +38,7 @@ export default function Shell({
           <Title order={1}>newsletters</Title>
         </Group>
       </AppShellHeader>
-      <AppShell.Navbar>
-        {lists.map((list) => (
-          <NavLink
-            component={Link}
-            label={list.name}
-            href={`/newsletters/${list.email}`}
-            active={list.email === selected?.email}
-          />
-        ))}
-      </AppShell.Navbar>
+      {navbar}
       <AppShellMain>{children}</AppShellMain>
     </AppShell>
   );
